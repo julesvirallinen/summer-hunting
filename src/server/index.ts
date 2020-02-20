@@ -7,11 +7,12 @@ import * as TypeGraphQl from 'type-graphql'
 
 import { Hero } from './entities/hero'
 import { Skill } from './entities/skill'
+import { Attributes } from './entities/attributes'
+import { LifePower } from './entities/lifepower'
+
 import { HeroResolver } from './resolvers/hero-resolver'
 
 import { seedDatabase } from './helpers'
-import { Attributes } from './entities/attributes'
-import { LifePower } from './entities/lifepower'
 
 
 useContainer(Container)

@@ -55,7 +55,7 @@ const LISA = {
   backStory: `
     Coming from a wealthy family of McAllisters, Lisa had a joyful childhood. Though as the day went by at the helping her family with upkeeping the farm and raking leaves she found herself quite bored. She said that to her father. Being a huntsman and the head of the family, Joe McAllister decided to teach his daughter to shoot with a revolver. After that there was no coming back.
   `,
-  attributes: 
+  attributes:
   {
     strength: 20,
     intelligence: 40,
@@ -102,7 +102,7 @@ const GIDEON = {
   backStory: `
     Gideon had always been bit of an oddball. He first noticed his psychic skills when he rescued a tiny kitten from getting squashed by a card. Little did he know of his future before awakening his powers, but at that point it seemed clear to him what he had to do. Couple years after the incident he joined the Hunters.
  `,
-  attributes: 
+  attributes:
   {
     strength: 1,
     intelligence: 99,

@@ -35,11 +35,13 @@ export class Hero {
   @JoinTable()
   skills: Lazy<Skill[]>
 
-  @OneToOne(type => Attributes, {cascade: ['insert']})
+  @Field(type => Attributes)
+  @OneToOne(type => Attributes, { lazy: true, cascade: ['insert'] })
   @JoinColumn()
   attributes: Attributes
 
-  @OneToOne(type => LifePower, {cascade: ['insert']})
+  @Field(type => LifePower)
+  @OneToOne(type => LifePower, { lazy: true, cascade: ['insert'] })
   @JoinColumn()
   lifePower: LifePower
 
