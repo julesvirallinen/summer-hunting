@@ -10,6 +10,8 @@ import { Skill } from './entities/skill'
 import { HeroResolver } from './resolvers/hero-resolver'
 
 import { seedDatabase } from './helpers'
+import { Attributes } from './entities/attributes'
+import { LifePower } from './entities/lifepower'
 
 
 useContainer(Container)
@@ -17,7 +19,7 @@ useContainer(Container)
 const databaseOptions: ConnectionOptions = {
   type: 'sqlite',
   database: `${path.resolve(__dirname, ".")}/data/db.sqlite`,
-  entities: [Hero, Skill],
+  entities: [Hero, Skill, Attributes, LifePower],
   logging: false, // switch to 'all' or true to enable database query logging
 }
 

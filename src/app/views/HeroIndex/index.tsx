@@ -16,13 +16,18 @@ const HEROES_QUERY = gql`
 			imgUrl
 			description
 			backStory
-			strength
-			intelligence
-			stamina
-			healthpoints
-			mana
-			agility
-			speed
+			attributes {
+				strength
+				intelligence
+				stamina
+				agility
+				speed
+			}
+			
+			lifePower {
+				healthpoints
+				mana
+			}
 			resistance
 			weakness
 			skills {

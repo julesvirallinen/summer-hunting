@@ -1,8 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToOne, JoinColumn } from "typeorm"
 import { ObjectType, ID, Field } from 'type-graphql'
 import { Lazy } from '../helpers'
 import { Skill } from '../entities/skill'
 import { TElement } from '../types/element'
+import { Attributes } from '../entities/attributes'
+import { LifePower } from "./lifepower"
 
 @Entity()
 @ObjectType()
@@ -33,32 +35,13 @@ export class Hero {
   @JoinTable()
   skills: Lazy<Skill[]>
 
-  /**
-   * This section consists of hero attributes. It is your job to normalize this data into attribute entity (table) and create relationship between hero and his attributes. 
-   * You can decide how you create the relationship. After this is done, you can insert that data into database with seedDatabase function in /server/helpers.ts and rebooting app.
-   */
+  @OneToOne(type => Attributes, {cascade: ['insert']})
+  @JoinColumn()
+  attributes: Attributes
 
-  @Field()
-  @Column()
-  strength: number
-
-  @Field()
-  @Column()
-  intelligence: number
-
-  @Field()
-  @Column()
-  stamina: number
-
-  @Field()
-  @Column()
-  agility: number
-
-  @Field()
-  @Column()
-  speed: number
-
-  /* </attributes>*/
+  @OneToOne(type => LifePower, {cascade: ['insert']})
+  @JoinColumn()
+  lifePower: LifePower
 
   @Field()
   @Column()
@@ -68,12 +51,6 @@ export class Hero {
   @Column()
   weakness: TElement
 
-  @Field()
-  @Column()
-  healthpoints: number
 
-  @Field()
-  @Column()
-  mana: number
 
 }
