@@ -5,6 +5,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import { HeroHeading } from "../../components/Typography"
+import { GiBroadsword } from 'react-icons/gi';
 
 
 interface IHeroCardProps {
@@ -61,6 +62,7 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, backStory, imgUrl }) 
         <HeroHeading>{name}</HeroHeading>
       </CardHeader>
       <ImageContainer><HeroImage src={imgUrl} ></HeroImage></ImageContainer>
+      <div><GiBroadsword color='white'/> 5</div>
     </Card>
   )
 }

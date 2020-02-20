@@ -8701,6 +8701,13 @@ react-hot-loader@^4.6.3:
     shallowequal "^1.0.2"
     source-map "^0.7.3"
 
+react-icons@^3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.9.0.tgz#89a00f20a0e02e6bfd899977eaf46eb4624239d5"
+  integrity sha512-gKbYKR+4QsD3PmIHLAM9TDDpnaTsr3XZeK1NTAb6WQQ+gxEdJ0xuCgLq0pxXdS7Utg2AIpcVhM1ut/jlDhcyNg==
+  dependencies:
+    camelcase "^5.0.0"
+
 react-imported-component@^5.2.4:
   version "5.5.3"
   resolved "https://registry.yarnpkg.com/react-imported-component/-/react-imported-component-5.5.3.tgz#e96605129afcba9afd30adc97aca770c1101f757"
