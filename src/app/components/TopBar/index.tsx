@@ -22,6 +22,7 @@ const Container = styled.header<Partial<ITopBar>>`
 const Logo = styled.img`
 	height: 65%;
 	margin-left: 30px;
+	width: 100%;
 	@media (max-width: 768px) {
 		height: 50%;
 	}
