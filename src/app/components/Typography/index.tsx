@@ -33,6 +33,15 @@ export const HeadingThree = styled.h3`
 	letter-spacing: 1.15px;
 `
 
+export const HeroHeading = styled.h4`
+  margin:auto;
+  color: white;
+  font-family: "Montserrat";
+	font-weight: 600;
+
+
+`
+
 export const Paragraph = styled.p`
   color: #191919;
   font-weight: 500;

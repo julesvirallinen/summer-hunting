@@ -39,6 +39,7 @@ interface IHeroIndexProps {}
 interface IHero {
   name: string;
   imgUrl: string;
+  
   // extend this to match query above
 }
 
@@ -47,6 +48,8 @@ const HeroCardContainer = styled.div`
 	padding: 50px;
 	align-self: center;
 	max-width: 1150px;
+	justify-content: flex-end;
+	flex-wrap: wrap;
 	@media (min-width: 1400px) {
 		margin-left: auto;
 		margin-right: auto;
