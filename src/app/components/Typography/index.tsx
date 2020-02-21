@@ -37,7 +37,8 @@ export const HeroHeading = styled.h4`
   margin:auto;
   color: white;
   font-family: "Montserrat";
-	font-weight: 600;
+  font-weight: 600;
+  display:inline;
 
 
 `
@@ -47,5 +48,13 @@ export const Paragraph = styled.p`
   font-weight: 500;
   letter-spacing: 0.65px;
   line-height: 32px;
+  font-family: "Montserrat";
+`
+
+export const CardParagraph = styled.p`
+  color: #191919;
+  font-weight: 200;
+  letter-spacing: 0.65px;
+  font-size: 14px;
   font-family: "Montserrat";
 `;

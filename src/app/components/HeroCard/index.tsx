@@ -4,31 +4,37 @@ import * as React from 'react'
 
 import styled from 'styled-components'
 
-import { HeroHeading } from "../../components/Typography"
-import { GiBroadsword } from 'react-icons/gi';
+import { HeroHeading, CardParagraph } from "../../components/Typography"
+import { FaHeart, FaPlus } from 'react-icons/fa'
 
 
 interface IHeroCardProps {
   name: string
   imgUrl: string
-  backStory: string
+  description: string
   // extend this
 }
 
 const Card = styled.div`
-  border: 4px solid #001147;
+  border: 1px solid #001147;
   border-radius: 10px;
   background-color: #21245d;
 
-  height: 400px;
+  height: 500px;
   width: 300px;
+	@media (min-width: 768px) {
+    margin-left: 20px;
+    margin-right: 20px;	}
 
-  margin-left: 20px;
-  margin-right: 20px;
   margin-bottom: 20px;
 
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+
+  box-shadow: 10px 10px 5px grey;
+
+
 `
 
 const CardHeader = styled.div`
@@ -44,9 +50,8 @@ const ImageContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
   border: 2x solid #001147;
-
-
 `
+
 const HeroImage = styled.img`
   width:110%;
   margin: -10px;
@@ -54,15 +59,82 @@ const HeroImage = styled.img`
 `
 
 
+const CardContent = styled.div`
+  flex-grow: 1;
+  width: 80%;
+  align-self:center;
+`
 
-export const HeroCard: React.FC<IHeroCardProps> = ({ name, backStory, imgUrl }) => {
+const LifePointsStats = styled.div`
+  display:flex;
+  justify-content: space-evenly;
+  padding-bottom: 5px;
+`
+
+const TextBox = styled.div`
+  height: 70%
+  background-color: #f58168;
+  padding: 5px;
+  border-radius: 10px;
+
+`
+
+const CardFooter = styled.div`
+  width: 100%;
+  height: 30px;
+  align-self: flex-end;
+  display:flex;
+  flex-direction: row
+`
+
+const FooterTab = styled.div`
+  flex-grow:1;
+  text-align:center;
+  display: flex;
+
+  border-radius: 0 0 10px 10px;
+
+`
+
+
+
+
+export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description }) => {
+  const heroColor = {
+    Porcu:'#f58168',
+    'Lisa McAllister':'#5ae6da',
+    Gideon:'#f05c9b'
+  }
+
+  const heroStyle = {
+    backgroundColor:heroColor[name]
+  }
+  const iconStyle = {
+    color:heroColor[name]
+  }
+
+
+
   return (
     <Card>
       <CardHeader>
         <HeroHeading>{name}</HeroHeading>
       </CardHeader>
       <ImageContainer><HeroImage src={imgUrl} ></HeroImage></ImageContainer>
-      <div><GiBroadsword color='white'/> 5</div>
+      <CardContent>
+        <LifePointsStats>
+          <div><FaHeart style={iconStyle}/> <HeroHeading>6</HeroHeading></div>
+          <div><FaPlus style={iconStyle}/> <HeroHeading>1000</HeroHeading></div>
+        </LifePointsStats>
+        <TextBox style={heroStyle}>
+          <CardParagraph>{description}</CardParagraph>
+        </TextBox>
+        </CardContent>
+      <CardFooter>
+        <FooterTab style={{ backgroundColor: '#21245d' }}><HeroHeading>main</HeroHeading></FooterTab>
+        <FooterTab style={{ backgroundColor: '#f58168' }}><HeroHeading>story</HeroHeading></FooterTab>
+        <FooterTab style={{ backgroundColor: '#5ae6da' }}><HeroHeading>stats</HeroHeading></FooterTab>
+      </CardFooter>
     </Card>
   )
 }

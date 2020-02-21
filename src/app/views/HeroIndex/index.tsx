@@ -23,7 +23,6 @@ const HEROES_QUERY = gql`
 				agility
 				speed
 			}
-			
 			lifePower {
 				healthpoints
 				mana
@@ -44,6 +43,7 @@ interface IHeroIndexProps {}
 interface IHero {
   name: string;
   imgUrl: string;
+  description: string;
   
   // extend this to match query above
 }
