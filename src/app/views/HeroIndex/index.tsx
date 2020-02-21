@@ -33,6 +33,7 @@ const HEROES_QUERY = gql`
 				name
 				damage
 				element
+				description
 			}
 		}
 	}
@@ -56,9 +57,12 @@ interface IHero {
 	  healthpoints: number
 	  mana: number
   }
-
-  
-  // extend this to match query above
+  skills: [{
+	  name:string
+	  damage:number
+	  element: string
+	  description: string
+  }]
 }
 
 const HeroCardContainer = styled.div`
@@ -92,8 +96,6 @@ export const HeroIndex: React.FC<IHeroIndexProps> = () => {
 	if (loading) {
 		return handleLoading();
 	}
-
-	console.log(heroes);
 
 	return (
 		<main>

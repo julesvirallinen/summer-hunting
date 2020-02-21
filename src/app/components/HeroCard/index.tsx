@@ -5,9 +5,11 @@ import { useState } from 'react';
 
 import styled from 'styled-components'
 
-import { HeroHeading, CardParagraph } from "../../components/Typography"
+import { HeroHeading, CardParagraph, Paragraph } from "../../components/Typography"
 import { FaHeart, FaMagic } from 'react-icons/fa'
+import { GiSmallFire } from 'react-icons/gi'
 import { StatBar } from './StatBar'
+import { Skills } from './Skills'
 
 interface IHeroCardProps {
   name: string
@@ -25,6 +27,12 @@ interface IHeroCardProps {
     healthpoints: number
     mana: number
   }
+  skills: [{
+    name: string
+    damage: number
+    element: string
+    description: string
+  }]
 }
 
 
@@ -34,7 +42,7 @@ const Card = styled.div`
   border-radius: 10px;
   background-color: #21245d;
 
-  height: 500px;
+  height: 530px;
   width: 300px;
 	@media (min-width: 768px) {
     margin-left: 20px;
@@ -115,6 +123,7 @@ const FooterTab = styled.div`
   flex-grow:1;
   text-align:center;
   display: flex;
+  cursor:pointer;
 
   border-radius: 0 0 10px 10px;
 
@@ -124,9 +133,8 @@ const FooterTab = styled.div`
 
 
 
-
-export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description, lifePower, attributes }) => {
-  const [page, setPage] = useState(1);
+export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description, lifePower, attributes, skills }) => {
+  const [page, setPage] = useState(3);
 
   const heroColor = {
     Porcu: '#f58168',
@@ -157,7 +165,7 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description, 
   const footer = (
     <CardFooter>
       {menuOptions.map((option, index) => (
-        <FooterTab style={footerBackground(index + 1)} onClick={() => setPage(index + 1)}>
+        <FooterTab key={option} style={footerBackground(index + 1)} onClick={() => setPage(index + 1)}>
           <HeroHeading>{option}</HeroHeading>
         </FooterTab>
       ))}
@@ -193,7 +201,10 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description, 
   )
 
   const page3 = (
-    <CardContent></CardContent>
+    <CardContent>
+      <Skills skills={skills} color={heroColor[name]}></Skills>
+
+    </CardContent >
   )
 
 
