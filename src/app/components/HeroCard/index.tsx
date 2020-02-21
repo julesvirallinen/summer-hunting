@@ -6,8 +6,8 @@ import { useState } from 'react';
 import styled from 'styled-components'
 
 import { HeroHeading, CardParagraph } from "../../components/Typography"
-import { FaHeart, FaPlus } from 'react-icons/fa'
-import {StatBar} from './StatBar'
+import { FaHeart, FaMagic } from 'react-icons/fa'
+import { StatBar } from './StatBar'
 
 interface IHeroCardProps {
   name: string
@@ -15,15 +15,15 @@ interface IHeroCardProps {
   description: string
   backStory: string
   attributes: {
-	  strength: number
-	  intelligence: number
-	  stamina: number
-	  agility: number
-	  speed: number
+    strength: number
+    intelligence: number
+    stamina: number
+    agility: number
+    speed: number
   }
   lifePower: {
-	  healthpoints: number
-	  mana: number
+    healthpoints: number
+    mana: number
   }
 }
 
@@ -79,6 +79,16 @@ const CardContent = styled.div`
   align-self:center;
 `
 
+const StatBars = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly
+  flex-grow: 1;
+  width: 80%;
+  align-self:center;
+
+`
+
 const LifePointsStats = styled.div`
   display:flex;
   justify-content: space-evenly;
@@ -90,7 +100,7 @@ const TextBox = styled.div`
   background-color: #f58168;
   padding: 5px;
   border-radius: 10px;
-
+  text-align: center;
 `
 
 const CardFooter = styled.div`
@@ -119,45 +129,38 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description, 
   const [page, setPage] = useState(1);
 
   const heroColor = {
-    Porcu:'#f58168',
-    'Lisa McAllister':'#5ae6da',
-    Gideon:'#f05c9b'
+    Porcu: '#f58168',
+    'Lisa McAllister': '#5ae6da',
+    Gideon: '#f05c9b'
   }
 
   const heroStyle = {
-    backgroundColor:heroColor[name]
+    backgroundColor: heroColor[name]
   }
   const iconStyle = {
-    color:heroColor[name]
+    color: heroColor[name]
   }
 
-  const pageBackground = {
-    1:'#21245d',
-    2:'#f58168',
-    3:'#5ae6da'
-  }
 
-  const footerBackground = (footer:number) => {
-    if (footer===page) return { backgroundColor: '#21245d' }
+  const footerBackground = (footer: number) => {
+    if (footer === page) return { backgroundColor: '#21245d' }
     else return { backgroundColor: '#3b3f81' }
   }
 
+  const menuOptions = ['main', 'stats', 'skills']
+
   const header = (
-  <CardHeader>
-    <HeroHeading>{name}</HeroHeading>
-  </CardHeader>)
+    <CardHeader>
+      <HeroHeading>{name}</HeroHeading>
+    </CardHeader>)
 
   const footer = (
     <CardFooter>
-      <FooterTab style={footerBackground(1)} onClick={() => setPage(1)}>
-        <HeroHeading>main</HeroHeading>
-      </FooterTab>
-      <FooterTab style={footerBackground(2)} onClick={() => setPage(2)}>
-          <HeroHeading>stats</HeroHeading>
-      </FooterTab>
-      <FooterTab style={footerBackground(3)} onClick={() => setPage(3)}>
-        <HeroHeading>skills</HeroHeading>
-      </FooterTab>
+      {menuOptions.map((option, index) => (
+        <FooterTab style={footerBackground(index + 1)} onClick={() => setPage(index + 1)}>
+          <HeroHeading>{option}</HeroHeading>
+        </FooterTab>
+      ))}
     </CardFooter>
   )
 
@@ -165,43 +168,41 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description, 
     <ImageContainer><HeroImage src={imgUrl} ></HeroImage></ImageContainer>
   )
 
-  
+
 
   const page1 = (
-    <Card>
-    {header}
-    {image}
     <CardContent>
       <LifePointsStats>
-        <div><FaHeart  style={iconStyle}/> <HeroHeading>{lifePower.healthpoints}</HeroHeading></div>
-        <div><FaPlus style={iconStyle}/> <HeroHeading>{lifePower.mana}</HeroHeading></div>
+        <div><FaHeart style={iconStyle} /> <HeroHeading>{lifePower.healthpoints}</HeroHeading></div>
+        <div><FaMagic style={iconStyle} /> <HeroHeading>{lifePower.mana}</HeroHeading></div>
       </LifePointsStats>
       <TextBox style={heroStyle}>
         <CardParagraph>{description}</CardParagraph>
       </TextBox>
-      </CardContent>
-      {footer}
-  </Card>
+    </CardContent>
   )
 
   const page2 = (
-    <Card>
-    {header}
-    {image}
-    <CardContent>
-      <StatBar color={heroColor[name]} stat={attributes.intelligence} name={'INT'}/>
-      <StatBar color={heroColor[name]} stat={attributes.speed} name={'SPD'}/>
-      <StatBar color={heroColor[name]} stat={attributes.stamina} name={'STA'}/>
-      <StatBar color={heroColor[name]} stat={attributes.strength} name={'STR'}/>
-      <StatBar color={heroColor[name]} stat={attributes.agility} name={'AGI'}/>
-    </CardContent>
-    {footer}
-  </Card>
+    <StatBars>
+      <StatBar color={heroColor[name]} stat={attributes.intelligence} name={'INT'} />
+      <StatBar color={heroColor[name]} stat={attributes.speed} name={'SPD'} />
+      <StatBar color={heroColor[name]} stat={attributes.stamina} name={'STA'} />
+      <StatBar color={heroColor[name]} stat={attributes.strength} name={'STR'} />
+      <StatBar color={heroColor[name]} stat={attributes.agility} name={'AGI'} />
+    </StatBars>
+  )
+
+  const page3 = (
+    <CardContent></CardContent>
   )
 
 
-
-  if (page === 1) return page1
-  if (page === 2) return page2
-  else return (<Card>{header}<CardContent></CardContent>{footer}</Card>)
+  return (
+    <Card>
+      {header}
+      {image}
+      {(page === 1) ? page1 : (page === 2) ? page2 : page3}
+      {footer}
+    </Card>
+  )
 }
