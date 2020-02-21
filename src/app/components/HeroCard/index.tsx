@@ -1,6 +1,8 @@
 // It is your job to implement this. More info in README
 
 import * as React from 'react'
+import { useState } from 'react';
+
 
 import styled from 'styled-components'
 
@@ -100,6 +102,8 @@ const FooterTab = styled.div`
 
 
 export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description }) => {
+  const [page, setPage] = useState(1);
+
   const heroColor = {
     Porcu:'#f58168',
     'Lisa McAllister':'#5ae6da',
@@ -113,13 +117,22 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description }
     color:heroColor[name]
   }
 
+  const pageBackground = {
+    1:'#21245d',
+    2:'#f58168',
+    3:'#5ae6da'
+  }
+
+  const header = (
+  <CardHeader>
+    <HeroHeading>{name}</HeroHeading>
+  </CardHeader>)
+
 
 
   return (
-    <Card>
-      <CardHeader>
-        <HeroHeading>{name}</HeroHeading>
-      </CardHeader>
+    <Card style={{backgroundColor:pageBackground[page]}}>
+      {header}
       <ImageContainer><HeroImage src={imgUrl} ></HeroImage></ImageContainer>
       <CardContent>
         <LifePointsStats>
@@ -131,9 +144,15 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description }
         </TextBox>
         </CardContent>
       <CardFooter>
-        <FooterTab style={{ backgroundColor: '#21245d' }}><HeroHeading>main</HeroHeading></FooterTab>
-        <FooterTab style={{ backgroundColor: '#f58168' }}><HeroHeading>story</HeroHeading></FooterTab>
-        <FooterTab style={{ backgroundColor: '#5ae6da' }}><HeroHeading>stats</HeroHeading></FooterTab>
+        <FooterTab style={{ backgroundColor: '#21245d' }} onClick={() => setPage(1)}>
+          <HeroHeading>main</HeroHeading>
+        </FooterTab>
+        <FooterTab style={{ backgroundColor: '#f58168' }} onClick={() => setPage(2)}>
+            <HeroHeading>story</HeroHeading>
+        </FooterTab>
+        <FooterTab style={{ backgroundColor: '#5ae6da' }} onClick={() => setPage(3)}>
+          <HeroHeading>stats</HeroHeading>
+        </FooterTab>
       </CardFooter>
     </Card>
   )
