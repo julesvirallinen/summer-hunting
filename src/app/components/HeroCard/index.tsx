@@ -128,32 +128,38 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description }
     <HeroHeading>{name}</HeroHeading>
   </CardHeader>)
 
-
-
-  return (
-    <Card style={{backgroundColor:pageBackground[page]}}>
-      {header}
-      <ImageContainer><HeroImage src={imgUrl} ></HeroImage></ImageContainer>
-      <CardContent>
-        <LifePointsStats>
-          <div><FaHeart style={iconStyle}/> <HeroHeading>6</HeroHeading></div>
-          <div><FaPlus style={iconStyle}/> <HeroHeading>1000</HeroHeading></div>
-        </LifePointsStats>
-        <TextBox style={heroStyle}>
-          <CardParagraph>{description}</CardParagraph>
-        </TextBox>
-        </CardContent>
-      <CardFooter>
-        <FooterTab style={{ backgroundColor: '#21245d' }} onClick={() => setPage(1)}>
-          <HeroHeading>main</HeroHeading>
-        </FooterTab>
-        <FooterTab style={{ backgroundColor: '#f58168' }} onClick={() => setPage(2)}>
-            <HeroHeading>story</HeroHeading>
-        </FooterTab>
-        <FooterTab style={{ backgroundColor: '#5ae6da' }} onClick={() => setPage(3)}>
-          <HeroHeading>stats</HeroHeading>
-        </FooterTab>
-      </CardFooter>
-    </Card>
+  const footer = (
+    <CardFooter>
+      <FooterTab style={{ backgroundColor: '#21245d' }} onClick={() => setPage(1)}>
+        <HeroHeading>main</HeroHeading>
+      </FooterTab>
+      <FooterTab style={{ backgroundColor: '#f58168' }} onClick={() => setPage(2)}>
+          <HeroHeading>story</HeroHeading>
+      </FooterTab>
+      <FooterTab style={{ backgroundColor: '#5ae6da' }} onClick={() => setPage(3)}>
+        <HeroHeading>stats</HeroHeading>
+      </FooterTab>
+    </CardFooter>
   )
+
+  const page1 = (
+    <Card style={{backgroundColor:pageBackground[page]}}>
+    {header}
+    <ImageContainer><HeroImage src={imgUrl} ></HeroImage></ImageContainer>
+    <CardContent>
+      <LifePointsStats>
+        <div><FaHeart style={iconStyle}/> <HeroHeading>6</HeroHeading></div>
+        <div><FaPlus style={iconStyle}/> <HeroHeading>1000</HeroHeading></div>
+      </LifePointsStats>
+      <TextBox style={heroStyle}>
+        <CardParagraph>{description}</CardParagraph>
+      </TextBox>
+      </CardContent>
+      {footer}
+  </Card>
+  )
+
+
+
+  if (page === 1) return page1
 }

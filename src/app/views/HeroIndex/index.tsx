@@ -1,13 +1,13 @@
-import * as React from 'react';
-import gql from 'graphql-tag';
-import { useQuery } from 'react-apollo-hooks';
-import styled from 'styled-components';
+import * as React from 'react'
+import gql from 'graphql-tag'
+import { useQuery } from 'react-apollo-hooks'
+import styled from 'styled-components'
 
-import { TopBar } from '../../components/TopBar';
-import { Hero } from '../../components/Hero';
-import { Section } from '../../components/Section';
-import { Footer } from '../../components/Footer';
-import { HeroCard } from '../../components/HeroCard';
+import { TopBar } from '../../components/TopBar'
+import { Hero } from '../../components/Hero'
+import { Section } from '../../components/Section'
+import { Footer } from '../../components/Footer'
+import { HeroCard } from '../../components/HeroCard'
 
 const HEROES_QUERY = gql`
 	query {
@@ -41,9 +41,10 @@ const HEROES_QUERY = gql`
 interface IHeroIndexProps {}
 
 interface IHero {
-  name: string;
-  imgUrl: string;
-  description: string;
+  name: string
+  imgUrl: string
+  description: string
+
   
   // extend this to match query above
 }
@@ -59,7 +60,7 @@ const HeroCardContainer = styled.div`
 		margin-left: auto;
 		margin-right: auto;
 	}
-`;
+`
 
 const handleLoading = () => <div>Loading...</div>;
 
@@ -102,5 +103,5 @@ export const HeroIndex: React.FC<IHeroIndexProps> = () => {
 
 			<Footer />
 		</main>
-	);
-};
+	)
+}
