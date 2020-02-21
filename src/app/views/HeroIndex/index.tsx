@@ -44,6 +44,18 @@ interface IHero {
   name: string
   imgUrl: string
   description: string
+  backStory: string
+  attributes: {
+	  strength: number
+	  intelligence: number
+	  stamina: number
+	  agility: number
+	  speed: number
+  }
+  lifePower: {
+	  healthpoints: number
+	  mana: number
+  }
 
   
   // extend this to match query above
