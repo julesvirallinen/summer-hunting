@@ -4,7 +4,6 @@ import { HeroHeading } from "../../components/Typography"
 
 
 import styled from 'styled-components'
-import { Hero } from 'src/server/entities/hero'
 
 interface IStatBar  {
   color:string

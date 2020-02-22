@@ -15,7 +15,6 @@ const HEROES_QUERY = gql`
 			name
 			imgUrl
 			description
-			backStory
 			attributes {
 				strength
 				intelligence
@@ -27,8 +26,6 @@ const HEROES_QUERY = gql`
 				healthpoints
 				mana
 			}
-			resistance
-			weakness
 			skills {
 				name
 				damage
