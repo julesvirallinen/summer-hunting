@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 
 import styled from 'styled-components'
+import { useSwipeable, Swipeable } from 'react-swipeable'
+
 
 import { HeroHeading, CardParagraph, Paragraph } from "../../components/Typography"
 import { FaHeart, FaMagic } from 'react-icons/fa'
@@ -133,7 +135,12 @@ const FooterTab = styled.div`
 
 
 export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description, lifePower, attributes, skills }) => {
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setPage((page === 3) ? 1 : page + 1),
+    onSwipedRight: () => setPage((page === 1) ? 3: page - 1)
+  });
+
 
   const heroColor = {
     Porcu: '#f58168',
@@ -207,7 +214,7 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description, 
 
 
   return (
-    <Card>
+    <Card {...handlers}>
       {header}
       {image}
       {(page === 1) ? page1 : (page === 2) ? page2 : page3}
