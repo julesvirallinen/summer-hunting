@@ -7,7 +7,6 @@ import styled from 'styled-components'
 
 import { HeroHeading, CardParagraph, Paragraph } from "../../components/Typography"
 import { FaHeart, FaMagic } from 'react-icons/fa'
-import { GiSmallFire } from 'react-icons/gi'
 import { StatBar } from './StatBar'
 import { Skills } from './Skills'
 
@@ -203,7 +202,6 @@ export const HeroCard: React.FC<IHeroCardProps> = ({ name, imgUrl, description, 
   const page3 = (
     <CardContent>
       <Skills skills={skills} color={heroColor[name]}></Skills>
-
     </CardContent >
   )
 

@@ -2,9 +2,7 @@
 import * as React from 'react'
 import { useState } from 'react';
 
-import { GiDeathSkull, GiBrain } from 'react-icons/gi'
 import styled from 'styled-components'
-import { Hero } from 'src/server/entities/hero'
 import { HeroHeading, CardParagraph } from "../../components/Typography"
 
 interface ISkills {
@@ -31,8 +29,6 @@ const Damage = styled.span`
 const DamageText = styled.span`
   font-size: 8px;
 `
-
-
 
 
 export const Skills: React.FC<ISkills> = ({ skills, color }) => {
