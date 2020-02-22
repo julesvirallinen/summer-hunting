@@ -24,6 +24,14 @@ const Skill = styled.div`
   margin-bottom: 10px;
 `
 
+const Damage = styled.span`
+  color: black;
+`
+
+const DamageText = styled.span`
+  font-size: 8px;
+`
+
 
 
 
@@ -37,7 +45,9 @@ export const Skills: React.FC<ISkills> = ({ skills, color }) => {
 
   const skillList = skills.map((skill, index) => (
     <Skill style={{ backgroundColor: color }} onClick={() => toggleExpanded(skill.name)}>
-      <HeroHeading>{skill.name}<span style={{ color: 'black' }}>{' '}{skill.damage}</span></HeroHeading>
+      <HeroHeading>
+        {skill.name}<Damage>{' '}{skill.damage}<DamageText>DMG</DamageText></Damage>
+      </HeroHeading>
       {expanded === skill.name ?
         (<CardParagraph>
           <HeroHeading>{skill.element} {'  '}</HeroHeading>

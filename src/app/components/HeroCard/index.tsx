@@ -100,13 +100,13 @@ const StatBars = styled.div`
 const LifePointsStats = styled.div`
   display:flex;
   justify-content: space-evenly;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 `
 
 const TextBox = styled.div`
   height: 70%
   background-color: #f58168;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
   text-align: center;
 `
